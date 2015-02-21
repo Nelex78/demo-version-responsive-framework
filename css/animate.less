@@ -1,0 +1,135 @@
+/*
+Responsive framework
+author: Developed by Stas Melnikov. http://stas-melnikov.ru
+*/ 
+
+/******************mixins************/
+
+.cubic_bezier(@value1, @value2, @value3, @value4){
+	-webkit-transition-timing-function: cubic-bezier(@value1, @value2, @value3, @value4);
+	transition-timing-function: cubic-bezier(@value1, @value2, @value3, @value4);
+}
+
+.translate3d(@value1, @value2, @value3){
+    -webkit-transform: translate3d(@value1, @value2, @value3);
+    transform: translate3d(@value1, @value2, @value3);
+}
+
+.transform_origin(@value1, @value2){
+	-webkit-transform-origin: @value1 @value2;
+	transform-origin: @value1 @value2;
+}
+
+.animation_name(@name){
+	-webkit-animation-name: @name;
+	animation-name: @name;
+}
+
+.animation_duration(@duration){
+	-webkit-animation-duration: @duration;
+	animation-duration: @duration;
+}
+
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+@-webkit-keyframes jump {
+
+	0%, 20%, 53%, 80%, 100% {
+		.cubic_bezier(0.215, 0.610, 0.355, 1.000);
+		.translate3d(0,0,0);
+	}
+
+	40%, 43% {
+		.cubic_bezier(0.755, 0.050, 0.855, 0.060);
+		.translate3d(0, -30px, 0);
+	}
+
+	70% {
+		.cubic_bezier(0.755, 0.050, 0.855, 0.060);
+		.translate3d(0, -15px, 0);
+	}
+
+	90% {
+		.translate3d(0,-4px,0);
+	}
+}
+
+@keyframes jump {
+
+	0%, 20%, 53%, 80%, 100% {
+		.cubic_bezier(0.215, 0.610, 0.355, 1.000);
+		.translate3d(0,0,0);
+	}
+
+	40%, 43% {
+		.cubic_bezier(0.755, 0.050, 0.855, 0.060);
+		.translate3d(0, -30px, 0);
+	}
+
+	70% {
+		.cubic_bezier(0.755, 0.050, 0.855, 0.060);
+		.translate3d(0, -15px, 0);
+	}
+
+	90% {
+		.translate3d(0,-4px,0);
+	}
+}
+
+.jump {
+	.animation_name(jump);
+	.transform_origin(center, bottom);
+}
+
+
+@-webkit-keyframes jumpOutUp {
+	20% {
+		.translate3d(0, -10px, 0);
+	}
+
+	40%, 45% {
+		opacity: 1;
+		.translate3d(0, 20px, 0);
+	}
+
+	100% {
+		opacity: 0;
+		.translate3d(0, -2000px, 0);
+	}
+}
+
+@keyframes jumpOutUp {
+	20% {
+		.translate3d(0, -10px, 0);
+	}
+
+	40%, 45% {
+		opacity: 1;
+		.translate3d(0, 20px, 0);
+	}
+
+	100% {
+		opacity: 0;
+		.translate3d(0, -2000px, 0);
+	}
+}
+
+.jumpOutUp {
+	.animation_name(jumpOutUp);
+}

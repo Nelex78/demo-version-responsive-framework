@@ -1,0 +1,92 @@
+
+/*
+Responsive framework
+author: Developed by Stas Melnikov. http://stas-melnikov.ru
+*/
+
+/*********************************************mixins*********************************/
+
+.m_translate(@x, @y) {
+
+	-webkit-transform: translateZ(0px) translate(@x, @y);
+	transform: translateZ(0px) translate(@x, @y);
+}
+
+/*********************************************basic style*********************************/
+
+.demo{
+	margin: 50px auto 0;
+	position: relative;
+	text-align: center;
+	
+	width: 300px;
+}
+
+.demo_item{
+	position: relative;
+	height: 60px;
+}
+
+.wrapper_preloader{
+	position: relative;
+}
+
+.indicator{
+	width: 280px;
+	
+	border-radius: 15px;
+	border: 3px solid #000;
+	overflow: hidden;
+	
+	position: relative;
+	z-index: 2;
+}
+
+.indicator:after{
+	background-color: #3c3760;
+	border-radius: 15px;
+	
+	display: block;
+	content: " ";
+}
+
+#indicator:after{
+	width: 100%;
+	height: 20px;
+	
+	.m_translate(-100%, 0);
+	
+	animation: indicator_load 5s linear infinite;
+	-webkit-animation: indicator_load 5s linear infinite;
+}
+
+#vartical_indicator{
+	height: 100px;
+	width: 20px;
+	
+	position: relative;
+	margin: 50px auto 0; 
+	z-index: 2;
+}
+
+#vartical_indicator:after{
+	width: 20px;
+	height: 100%;
+	
+	.m_translate(0%, 100%);
+	
+	animation: indicator_load 2s linear infinite;
+	-webkit-animation: indicator_load 2s linear infinite;
+}
+
+@keyframes indicator_load {
+	100% { 
+         .m_translate(0, 0);
+    }
+}
+
+@-webkit-keyframes indicator_load {
+	100% { 
+         .m_translate(0, 0);
+    }
+}
